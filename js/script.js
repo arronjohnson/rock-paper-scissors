@@ -18,7 +18,7 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
   if (playerSelection === computerSelection) {
-    return `Draw! You both chose ${playerSelection}`;
+    return 'draw';
   }
   
   // check win conditions for the player
@@ -27,14 +27,50 @@ function playRound(playerSelection, computerSelection) {
   let scissorsWin = playerSelection === 'scissors' && computerSelection == 'paper';
   
   if (rockWin || paperWin || scissorsWin) {
-    return `You win! ${playerSelection} beats ${computerSelection}`;
+    return 'player';
   }
   
   // if the player didn't win then the computer must have
-  return `You lose! ${computerSelection} beats ${playerSelection}`;
+  return 'computer';
 }
 
-let playerSelection = prompt("Enter your choice of rock, paper, or scissors:", "") || 'rock';
-let computerSelection = computerPlay();
-
-console.log(playRound(playerSelection, computerSelection));
+/*
+  play a game consisting of 5 sequential rounds
+  
+  scores are updated after each round until the overall
+  winner is found and results printed
+*/
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+  
+  // play 5 rounds of the game
+  for (let i = 0; i < 5; i++) {
+    let playerSelection = prompt("Enter your choice of rock, paper, or scissors:", "") || 'rock';
+    let computerSelection = computerPlay();
+    let roundWinner = playRound(playerSelection, computerSelection);
+    
+    if (roundWinner === 'draw') {
+      console.log(`Draw! You both chose ${playerSelection}`);
+    }
+    else if (roundWinner === 'player') {
+      console.log(`You win! ${playerSelection} beats ${computerSelection}`);
+      playerScore++;
+    }
+    else {
+      console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+      computerScore++;
+    }
+  }
+  
+  // determine the overall winner using the scores and print the results
+  let overallWinner;
+  if (playerScore === computerScore) {
+    overallWinner = "Draw";
+  }
+  else {
+    overallWinner = playerScore > computerScore ? "Player" : "Computer";
+  }
+  console.log(`[Scores] Player: ${playerScore} | Computer: ${computerScore}`)
+  console.log(`The overall winner is: ${overallWinner}`)
+}

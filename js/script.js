@@ -1,9 +1,9 @@
-const choices = ['rock', 'paper', 'scissors'];
+const choices = ["rock", "paper", "scissors"];
 
 // return a randomly generated choice for the computer
 function computerPlay() {
   let randomInt = Math.floor(Math.random() * 3);
-    
+
   return choices[randomInt];
 }
 
@@ -18,20 +18,21 @@ function computerPlay() {
 function playRound(playerSelection, computerSelection) {
   playerSelection = playerSelection.toLowerCase();
   if (playerSelection === computerSelection) {
-    return 'draw';
+    return "draw";
   }
-  
+
   // check win conditions for the player
-  let rockWin = playerSelection === 'rock' && computerSelection == 'scissors';
-  let paperWin = playerSelection === 'paper' && computerSelection == 'rock';
-  let scissorsWin = playerSelection === 'scissors' && computerSelection == 'paper';
-  
+  let rockWin = playerSelection === "rock" && computerSelection == "scissors";
+  let paperWin = playerSelection === "paper" && computerSelection == "rock";
+  let scissorsWin =
+    playerSelection === "scissors" && computerSelection == "paper";
+
   if (rockWin || paperWin || scissorsWin) {
-    return 'player';
+    return "player";
   }
-  
+
   // if the player didn't win then the computer must have
-  return 'computer';
+  return "computer";
 }
 
 /*
@@ -43,34 +44,32 @@ function playRound(playerSelection, computerSelection) {
 function game() {
   let playerScore = 0;
   let computerScore = 0;
-  
+
   // play 5 rounds of the game
   for (let i = 0; i < 5; i++) {
-    let playerSelection = prompt("Enter your choice of rock, paper, or scissors:", "") || 'rock';
+    let playerSelection =
+      prompt("Enter your choice of rock, paper, or scissors:", "") || "rock";
     let computerSelection = computerPlay();
     let roundWinner = playRound(playerSelection, computerSelection);
-    
-    if (roundWinner === 'draw') {
+
+    if (roundWinner === "draw") {
       console.log(`Draw! You both chose ${playerSelection}`);
-    }
-    else if (roundWinner === 'player') {
+    } else if (roundWinner === "player") {
       console.log(`You win! ${playerSelection} beats ${computerSelection}`);
       playerScore++;
-    }
-    else {
+    } else {
       console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
       computerScore++;
     }
   }
-  
+
   // determine the overall winner using the scores and print the results
   let overallWinner;
   if (playerScore === computerScore) {
     overallWinner = "Draw";
-  }
-  else {
+  } else {
     overallWinner = playerScore > computerScore ? "Player" : "Computer";
   }
-  console.log(`[Scores] Player: ${playerScore} | Computer: ${computerScore}`)
-  console.log(`The overall winner is: ${overallWinner}`)
+  console.log(`[Scores] Player: ${playerScore} | Computer: ${computerScore}`);
+  console.log(`The overall winner is: ${overallWinner}`);
 }

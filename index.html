@@ -5,20 +5,36 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rock Paper Scissors</title>
-  <script src="js/script.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="js/script.js" defer></script>
 </head>
 <body>
-  <button>Rock</button>
-  <button>Paper</button>
-  <button>Scissors</button>
-  <div id="results">
-    <h1>Scores</h1>
-    <p>
-      Player <span id="playerScore">0</span>
-    </p>
-    <p>
-      Computer <span id="computerScore">0</span>
-    </p>
-  </div>
+  <header>
+    <h1>Rock Paper Scissors</h1>
+  </header>
+  <main>
+    <section class="output">
+      <p>The first player to reach 5 points wins.<br>Make your choice!</p>
+    </section>
+    <section class="scores">
+      <h2>Scores</h2>
+      <div class="score-container">
+        <p>
+          Player: <span class="playerScore">0</span>
+        </p>
+        <p>
+          Computer: <span class="computerScore">0</span>
+        </p>
+      </div>
+    </section>
+    <section class="buttons">
+      <button class="rock">Rock</button>
+      <button class="paper">Paper</button>
+      <button class="scissors">Scissors</button>
+    </section>
+  </main>
+  <footer>
+    Created by Arron Johnson
+  </footer>
 </body>
 </html>

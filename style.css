@@ -63,6 +63,15 @@ button:hover {
   border: 2px solid #f9faf8;
 }
 
+a {
+  color: #f9faf8;
+  text-decoration: none;
+}
+
+a:hover {
+  color: lightblue;
+}
+
 .output {
   height: 48px;
   margin-bottom: 16px;
